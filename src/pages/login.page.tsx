@@ -6,8 +6,8 @@ import { getGoogleUrl } from '../utils/getGoogleUrl.ts';
 const LoginPage = () => {
   const location = useLocation();
   let from = ((location.state as any)?.from?.pathname as string) || '/';
-  const [authCode, setAuthCode] = useState<string | null>(null); // State to hold the auth code
-  const [userData, setUserData] = useState<any>(null); // State to hold user data
+  const [authCode, setAuthCode] = useState<string | null>(null); 
+  const [userData, setUserData] = useState<any>(null); 
 
   useEffect(() => {
     // Function to parse the URL and extract the auth code
@@ -30,7 +30,7 @@ const LoginPage = () => {
 
   const handleFetchUserData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v1/google/auth/user', {
+      const response = await fetch('http://localhost:8080/api/v1/user/google/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Container maxWidth={false} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#2363eb' }}>
+    <Container maxWidth={false} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#323475' }}>
       <Box width='27rem'>
         <Typography variant='h6' component='p' sx={{ my: '1.5rem', textAlign: 'center', color: 'white' }}>
           Login with Google to continue
@@ -107,9 +107,9 @@ const LoginPage = () => {
         {userData && (
           <Box mt={2} sx={{ display: 'flex', justifyContent: 'center' }}>
             <Paper sx={{ p: 2, maxWidth: 400 }}>
-              <Avatar alt={userData.Name} src={userData.Picture} sx={{ width: 100, height: 100, margin: 'auto' }} />
-              <Typography variant="h6" align="center">{userData.Name}</Typography>
-              <Typography variant="subtitle1" align="center">{userData.Email}</Typography>
+              <Avatar alt={userData.name} src={userData.picture} sx={{ width: 100, height: 100, margin: 'auto' }} />
+              <Typography variant="h6" align="center">{userData.name}</Typography>
+              <Typography variant="subtitle1" align="center">{userData.email}</Typography>
             </Paper>
           </Box>
         )}
