@@ -3,7 +3,7 @@ export const getGoogleUrl = (from: string) => {
     const rootUrl = `https://accounts.google.com/o/oauth2/v2/auth`;
   
     const options = {
-      redirect_uri: 'http://localhost:3000/auth/google/callback',
+      redirect_uri: 'http://localhost:3000/channels/sign-in',
       client_id: '63821160832-1brgvffble9ibdtq9uopbbacvep3naks.apps.googleusercontent.com',
       access_type: 'offline',
       response_type: 'code',
